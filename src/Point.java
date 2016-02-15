@@ -10,6 +10,7 @@ public class Point {
     private double x;
     private double y;
     private Color clusterColor;
+
     public Point(double x, double y){
         this.x = x;
         this.y = y;
@@ -40,8 +41,6 @@ public class Point {
     }
 
     public static Point createRandomPoint(double width, double height){
-
-
         Random r = new Random();
         double x = Math.abs(r.nextInt((int)width));
         double y = Math.abs(r.nextInt((int)height));

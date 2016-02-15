@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 
 /**
@@ -31,6 +33,32 @@ public class GUI extends JFrame {
         pointsText = new JTextField("Count of points");
         pointsText.setSize(150, 30);
         pointsText.setLocation(5,5);
+        pointsText.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                pointsText.setText("");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
 
         startButton = new JButton("Start!");
         startButton.setSize(150, 30);
@@ -46,7 +74,7 @@ public class GUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 int countOfPoints = Integer.parseInt(pointsText.getText());
-                maximin.removeAllClasses();
+                maximin.removeAllClusters();
                 maximin.setCountOfPoints(countOfPoints);
                 maximin.createPoints();
                 maximin.calculate();

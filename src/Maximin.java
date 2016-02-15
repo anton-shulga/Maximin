@@ -24,7 +24,7 @@ public class Maximin {
         this.countOfPoints = countOfPoints;
     }
 
-    //Initializes the process
+
     public void createPoints() {
         points = Point.createRandomPoints(countOfPoints, screenSize.getWidth(), screenSize.getHeight());
         Cluster cluster = new Cluster(getRandomColor());
@@ -45,8 +45,6 @@ public class Maximin {
         return new Color(r, g, b);
     }
 
-
-
     private  void setSecondCentroid(){
         double min = Double.MIN_VALUE;
         double max = min;
@@ -66,7 +64,7 @@ public class Maximin {
         clusters.add(newCluster);
     }
 
-    private boolean setNewCentroid(){
+    private boolean isSetNewCentroid(){
         calculateMaxDistance();
         double totalDistance = 0;
         List<Double> distances = new ArrayList<Double>();
@@ -78,6 +76,7 @@ public class Maximin {
             }
 
         }
+
         if(maxDistance > totalDistance/distances.size()/2){
             Cluster newCluster = new Cluster(getRandomColor());
             newCluster.setCentroid(newCentroid);
@@ -96,7 +95,7 @@ public class Maximin {
             clearClusters();
             assignClusters();
             calculateMaxDistance();
-            if(!setNewCentroid())
+            if(!isSetNewCentroid())
                 break;
 
         }
@@ -110,7 +109,6 @@ public class Maximin {
 
 
     private void calculateMaxDistance(){
-
         double max = Double.MIN_VALUE;
         Point pointToCentroid = null;
         double distance = 0.0;
@@ -128,6 +126,7 @@ public class Maximin {
         maxDistance = max;
         newCentroid = pointToCentroid;
     }
+
     private void assignClusters() {
         double max = Double.MAX_VALUE;
         double min = max;
@@ -159,7 +158,7 @@ public class Maximin {
         return clusters;
     }
 
-    public void removeAllClasses(){
+    public void removeAllClusters(){
         clusters.clear();
     }
 }
